@@ -29,5 +29,7 @@ Install [Taskfile Plugin](https://plugins.jetbrains.com/plugin/17058-taskfile) b
 
 1. Open 'Run/Debug Configurations'.
 2. Add `Taskfile`:
+   * Task executable: Select `task` executable to run. Set empty to run `task` in `$PATH`.
    * Taskfile: Select `Taskfile.yml` file to use.
    * Task: Input task name to run.
+   * CLI arguments: Input [CLI arguments](https://taskfile.dev/#/usage?id=forwarding-cli-arguments-to-commands) to use.
