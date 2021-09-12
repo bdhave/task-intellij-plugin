@@ -9,7 +9,7 @@ IntelliJ Run configuration plugin for [Task](https://taskfile.dev/).
 ## Requirements
 
 * Install `task`. See [here](https://taskfile.dev/#/installation)
-* JDK 11 to build from source
+* JDK 8 or higher to build from source
 
 ## Install from JetBrains Plugin Marketplace
 
