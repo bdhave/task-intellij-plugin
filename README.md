@@ -33,3 +33,5 @@ Install [Taskfile Plugin](https://plugins.jetbrains.com/plugin/17058-taskfile) b
    * Taskfile: Select `Taskfile.yml` file to use.
    * Task: Input task name to run.
    * CLI arguments: Input [CLI arguments](https://taskfile.dev/#/usage?id=forwarding-cli-arguments-to-commands) to use.
+   * Working directory
+   * Environment variables
