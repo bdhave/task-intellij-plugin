@@ -6,7 +6,7 @@ import com.intellij.openapi.vfs.VirtualFile
 
 class TaskExecutableFileChooserDescriptor : FileChooserDescriptor(true, false, false, false, false, false) {
     init {
-        title = "Select task executable"
+        title = "Select Task Executable"
     }
 
     override fun isFileVisible(file: VirtualFile, showHiddenFiles: Boolean): Boolean {

@@ -1,22 +1,13 @@
 package lechuck.intellij
 
 import com.intellij.execution.configurations.ConfigurationFactory
-import com.intellij.execution.configurations.ConfigurationType
-import com.intellij.execution.configurations.RunConfiguration
-import com.intellij.openapi.components.BaseState
 import com.intellij.openapi.project.Project
 
-class TaskConfigurationFactory(type: ConfigurationType) : ConfigurationFactory(type) {
+class TaskConfigurationFactory(private val runCfgType: TaskRunConfigurationType) : ConfigurationFactory(runCfgType) {
 
-    override fun getId(): String {
-        return TaskRunConfigurationType.ID
-    }
+    override fun getId() = TaskRunConfigurationType.ID
 
-    override fun createTemplateConfiguration(project: Project): RunConfiguration {
-        return TaskRunConfiguration(project, this, "Task")
-    }
+    override fun getName(): String = runCfgType.displayName
 
-    override fun getOptionsClass(): Class<out BaseState> {
-        return TaskRunConfigurationOptions::class.java
-    }
+    override fun createTemplateConfiguration(project: Project) = TaskRunConfiguration(project, this, "Task")
 }
