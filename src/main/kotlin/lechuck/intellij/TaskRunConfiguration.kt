@@ -17,7 +17,7 @@ import java.io.File
 class TaskRunConfiguration(project: Project, factory: TaskConfigurationFactory, name: String) :
     LocatableConfigurationBase<RunProfileState>(project, factory, name) {
 
-    var taskPath = ""
+    var taskPath = "/opt/homebrew/bin/task"
     var filename = ""
     var task = ""
     var arguments = ""
@@ -94,7 +94,9 @@ class TaskRunConfiguration(project: Project, factory: TaskConfigurationFactory, 
                 // taskfile
                 val macroManager = PathMacroManager.getInstance(project)
                 val taskfilePath = macroManager.expandPath(filename)
-                params.addAll("--taskfile", taskfilePath)
+                if (taskfilePath.isNotEmpty()) {
+                    params.addAll("--taskfile", taskfilePath)
+                }
 
                 // task
                 if (task.isNotEmpty()) {
@@ -108,8 +110,11 @@ class TaskRunConfiguration(project: Project, factory: TaskConfigurationFactory, 
                 }
 
                 // working directory
-                val workDirectory =
-                    if (workingDirectory.isNotEmpty()) macroManager.expandPath(workingDirectory) else File(taskfilePath).parent
+                val workDirectory = if (workingDirectory.isNotEmpty()) {
+                    macroManager.expandPath(workingDirectory)
+                } else {
+                    File(taskfilePath).parent
+                }
 
                 // environment variables
                 val parentEnvs =
